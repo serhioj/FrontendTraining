@@ -1,0 +1,118 @@
+$color-active: #30f;
+$color-hover-active: #200883;
+$color-border: 1px solid #d9d1f7;
+$color-hover-bg: #d9d1f7;
+$color-text-main: #000;
+
+// ховер для кнопки, изначально залитой
+@mixin button-hover-filled() {
+  &:hover,
+  &:active,
+  &:focus {
+    background: $color-hover-active;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+// ховер для кнопки, изначально только с обводкой
+@mixin button-hover-border() {
+  &:hover,
+  &:active,
+  &:focus {
+    background: $color-hover-active;
+  }
+}
+
+// ховер для стрелок навигации
+@mixin button-hover-arrow() {
+  &:hover,
+  &:active,
+  &:focus {
+    border: 1px solid $color-hover-bg;
+    background: $color-hover-active;
+    transition: all 0.3s ease-in-out;
+
+    svg path {
+      transition: all 0.3s ease-in-out;
+      fill: #fff;
+    }
+  }
+}
+
+// планшет -> мобилка
+// @mixin tablet {
+//   @media (max-width: 768px) {
+//     @content;
+//   }
+// }
+
+@mixin desktop-l {
+  @media (max-width: 1680px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 1441px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet-1024 {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile-l {
+  @media (max-width: 700px) {
+    @content;
+  }
+}
+
+@mixin tablet-mobile {
+  @media screen and (min-width: 600px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin mobile425 {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media (max-width: 374px) {
+    @content;
+  }
+}
+
+//$1920: '(max-width: 1920px)';
+//$1680: ~'(max-width: 1680px)';
+//$1366: ~'(max-width: 1366px)';
+//$1280: ~'(max-width: 1280px)';
+
+//$800: ~'(max-width: 800px)';
+//$770: ~'(max-width: 770px)';
+//$768: ~'(max-width: 768px)';
+//$600: ~'(max-width: 600px)';
+//$533: ~'(max-width: 533px)';
+//$425: ~'(max-width: 425px)';
+//$375: ~'(max-width: 375px)';
+//$360: ~'(max-width: 360px)';
+//$320: ~'(max-width: 320px)';
+//$240: ~'(max-width: 240px)';
+//$176: ~'(max-width: 176px)';

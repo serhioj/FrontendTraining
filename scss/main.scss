@@ -1,0 +1,864 @@
+@import 'reset';
+@import 'vars';
+@import 'mixins';
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 300 to 900
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+@font-face {
+    font-family: "SF Pro Display Medium";
+    src: url("/src/fonts/SF-Pro-Display-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF Pro Display Bold";
+    src: url("/src/fonts/SF-Pro-Display-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF Pro Display Regular";
+    src: url("/src/fonts/SF-Pro-Display-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF Pro Display Ultralight";
+    src: url("/src/fonts/SF-Pro-Display-Ultralight.otf") format("opentype");
+}
+
+.container {
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.header {
+    /* Header Top */
+    position: static;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 160px 16px 160px;
+    width: 100%;
+
+    /* Inside Auto Layout */
+    order: 0;
+    margin: 0px 0px;
+
+
+    @include tablet {
+        padding: 16px 100px;
+    }
+
+    @include mobile {
+        padding: 24px 16px;
+        height: 88px;
+    }
+}
+
+.logo {
+    /* Logo Vector */
+    position: static;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.search {
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 10px;
+
+
+    border-radius: 8px;
+    background: rgb(245, 245, 245);
+
+    input {
+        opacity: 0.5;
+        color: rgb(101, 101, 101);
+        font-family: SF Pro Display Medium;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    @include mobile {
+        display: none;
+    }
+
+    @include tablet {
+        order: 0
+    }
+}
+
+.nav-links {
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 52px;
+    padding: 0px;
+    order: 2;
+    margin: 0px 10px;
+
+    a {
+        color: rgb(0, 0, 0);
+        font-family: SF Pro Display Medium;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19px;
+        letter-spacing: 0%;
+        text-align: left;
+        text-wrap: nowrap;
+
+        /* Main/Black */
+        opacity: 0.3;
+    }
+
+    a.select {
+        opacity: 1;
+    }
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    padding: 0px;
+    order: 3;
+
+    margin: 0px 10px;
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.burger-menu_button {
+    display: none;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    margin-right: 25px;
+    z-index: 20;
+
+    @include tablet {
+        display: block;
+    }
+}
+
+.burger-menu_button:hover .burger-menu_lines {
+    filter: brightness(0.7);
+}
+
+.burger-menu_button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.burger-menu_lines::before,
+.burger-menu_lines::after,
+.burger-menu_lines {
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: #000000;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.burger-menu_lines {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.burger-menu_lines::before {
+    content: '';
+    top: -12px;
+}
+
+.burger-menu_lines::after {
+    content: '';
+    top: 12px;
+}
+
+
+.burger-menu_active .burger-menu_lines {
+    background-color: transparent;
+}
+
+.burger-menu_active .burger-menu_lines::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.burger-menu_active .burger-menu_lines::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.burger-menu_nav {
+    padding-top: 88px;
+    position: fixed;
+    top: 0;
+    z-index: 19;
+    display: flex;
+    flex-flow: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+    right: -100%;
+    -webkit-transition: 0.8s;
+    -moz-transition: 0.8s;
+    -o-transition: 0.8s;
+    transition: 0.8s;
+}
+
+.burger-menu_active .burger-menu_nav {
+    right: 0;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.burger-menu_link {
+    padding: 18px 35px;
+    font-family: SF Pro Display Regular;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 400;
+    color: #000000;
+    border-bottom: 1px solid #fff;
+}
+
+.burger-menu_link-icons {
+    padding: 18px 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.burger-menu_link:first-child {
+    border-top: 1px solid #fff;
+}
+
+.burger-menu_link:hover {
+    filter: brightness(0.9);
+}
+
+.burger-menu_overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+
+
+.iphone-img {
+    background-image: url(/src/img/phone.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 632px;
+    width: 406px;
+    position: relative;
+    margin: auto 160px 0 auto;
+    flex-shrink: 0;
+
+    @include tablet {
+        margin: 0 0;
+        width: 321px
+    }
+
+}
+
+.swiper-slide-1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(33, 28, 36);
+    width: auto;
+    height: 769px;
+
+
+    &__content {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: auto auto auto 160px;
+        gap: 24px;
+
+        &__title1 {
+            opacity: 0.4;
+            color: rgb(255, 255, 255);
+            font-family: Figtree;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+
+        &__title2 {
+            color: rgb(255, 255, 255);
+            font-family: SF Pro Display Ultralight;
+            font-size: 96px;
+            font-weight: 600;
+            line-height: 72px;
+            letter-spacing: -1%;
+            text-align: left;
+        }
+
+        &__title3 {
+            color: rgb(145, 145, 145);
+            font-family: SF Pro Display Ultralight;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+
+        &__button {
+            padding: 16px 56px 16px 56px;
+
+            box-sizing: border-box;
+            /* Main/White */
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 6px;
+
+            color: rgb(255, 255, 255);
+            font-family: SF Pro Display Ultralight;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0%;
+            text-align: center;
+        }
+    }
+
+    @include tablet {
+        flex-direction: column;
+        align-items: center;
+        padding: 88px 0;
+
+        &__content {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin: 0 0;
+
+            &__title1 {
+                text-align: center;
+            }
+
+            &__title2 {
+                text-wrap: wrap;
+                font-size: 72px;
+                text-align: center;
+            }
+
+            &__title3 {
+                text-wrap: wrap;
+                margin-bottom: 14px;
+                text-align: center;
+            }
+        }
+
+    }
+}
+
+.yobaniy-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+
+    @include tablet {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid-div-parent {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include tablet {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+}
+
+.grid-child {
+    background: #f9f9f9;
+    box-sizing: border-box;
+    height: auto;
+    // padding: 1.25rem;
+    width: calc(100%/3 - 20px);
+
+    &:nth-child(1) {
+        width: 100%;
+    }
+
+    &:nth-child(2) {
+        width: calc(100%/2);
+    }
+
+    &:nth-child(3) {
+        width: calc(100%/2);
+    }
+
+    @include tablet {
+        &:nth-child(1) {
+            width: 100%;
+        }
+
+        &:nth-child(2) {
+            width: 100%;
+        }
+
+        &:nth-child(3) {
+            width: 100%;
+        }
+    }
+}
+
+.grid-playstation {
+    background-repeat: no-repeat;
+    background-image: url(/src/img/PlayStation.svg);
+    background-size: contain;
+    background-position: -20%;
+    min-height: 328px;
+
+    @include tablet {
+        background-size: 200px 200px;
+        background-position: 50% 40px;
+        padding: 40px 16px;
+        height: 424px;
+
+    }
+}
+
+.grid-playstation-text {
+    width: 338px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto auto auto 334px;
+
+    &__title {
+        /* Playstation 5 */
+        margin: 0px 0px 16px 0px;
+        color: rgb(0, 0, 0);
+        font-family: SF Pro Display Bold;
+        font-size: 49px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+        text-wrap: nowrap;
+    }
+
+    &__description {
+        color: rgb(145, 145, 145);
+        font-family: SF Pro Display Medium;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    @include tablet {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0 0;
+
+        &__title {
+            text-align: center;
+            font-size: 34px;
+        }
+
+        &__description {
+            text-align: center;
+            width: 343px;
+            font-size: 16px;
+        }
+    }
+}
+
+.grid-headphones {
+    background-repeat: no-repeat;
+    background-image: url(/src/img/headphones.png);
+    background-size: contain;
+    background-position: -150px;
+
+    @include tablet {
+        background-size: 200px 200px;
+        background-position: 50% 40px;
+        padding: 40px 16px;
+        height: 376px;
+
+    }
+}
+
+.grid-headphones-text {
+    width: 143px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto auto auto 152px;
+
+    &__title {
+        color: rgb(0, 0, 0);
+        font-family: SF Pro Display Medium;
+        font-size: 29px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    &__description {
+        color: rgb(145, 145, 145);
+        font-family: SF Pro Display Medium;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    @include tablet {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0 0;
+
+        &__title {
+            text-align: center;
+            font-size: 34px;
+        }
+
+        &__description {
+            text-align: center;
+            width: 343px;
+            font-size: 16px;
+        }
+    }
+}
+
+.grid-vision {
+    min-height: 272px;
+    background: rgb(53, 53, 53);
+    background-repeat: no-repeat;
+    background-image: url(/src/img/vision.png);
+    background-size: contain;
+    background-position: -200px;
+
+    @include tablet {
+        background-size: 325px 193px;
+        background-position: 50% 40px;
+        padding: 40px 16px;
+        height: 370px;
+
+    }
+}
+
+.grid-vision-text {
+    width: 144px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto 48px auto auto;
+
+    &__title {
+        color: rgb(255, 255, 255);
+        font-family: SF Pro Display Medium;
+        font-size: 29px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    &__description {
+
+        color: rgb(145, 145, 145);
+        font-family: SF Pro Display Medium;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+
+    @include tablet {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0 0;
+
+        &__title {
+            text-align: center;
+            font-size: 34px;
+        }
+
+        &__description {
+            text-align: center;
+            width: 343px;
+            font-size: 16px;
+        }
+    }
+}
+
+.grid-mac {
+    background-repeat: no-repeat;
+    background-image: url(/src/img/mac.png);
+    background-size: contain;
+    background-position: 500px;
+    overflow: hidden;
+
+    @include tablet {
+        background-size: 325px 193px;
+        background-position: 50% 40px;
+        padding: 40px 16px;
+        height: 504px;
+
+    }
+}
+
+.grid-mac-text {
+    width: auto;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 204px;
+    margin-left: 56px;
+
+    &__title {
+        width: auto;
+        color: rgb(0, 0, 0);
+        font-family: SF Pro Display Medium;
+        font-size: 64px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+        text-wrap: nowrap;
+        margin-bottom: 16px;
+    }
+
+    &__description {
+        width: auto;
+        max-width: 360px;
+        color: rgb(145, 145, 145);
+        font-family: SF Pro Display Regular;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    &__button {
+        /* Button */
+        /* Автолейаут */
+        width: 184px;
+        text-wrap: nowrap;
+        height: 56px;
+        align-items: center;
+        padding: 16px 56px 16px 56px;
+
+        box-sizing: border-box;
+        /* Main/Black */
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 6px;
+
+        color: rgb(0, 0, 0);
+        font-family: SF Pro Display Medium;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    @include tablet {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0 0;
+
+        &__title {
+            text-align: center;
+            font-size: 34px;
+        }
+
+        &__description {
+            text-align: center;
+            width: 343px;
+            font-size: 16px;
+        }
+
+        &__button {
+            width: 100%;
+        }
+    }
+}
+
+.category-container {
+    padding: 80px;
+    display: flex;
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 32px;
+        margin-bottom: 32px;
+
+        &__text {
+            display: flex;
+            color: rgb(0, 0, 0);
+            font-family: SF Pro Display Regular;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 32px;
+            letter-spacing: 1%;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        &__buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 36px;
+        }
+    }
+
+    @include tablet {
+        padding: 64px 16px
+    }
+}
+
+.swiper-wrapper {
+    height: auto;
+}
+
+.swiper-button-prev {
+    position: relative;
+    height: auto;
+    top: auto;
+    width: auto;
+    margin-top: 0px;
+
+}
+
+.swiper-button-prev::after {
+    font-size: 32px;
+    color: black;
+    font-family: SF Pro Display Regular;
+    content: "";
+}
+
+.swiper-button-next {
+    position: relative;
+    height: auto;
+    top: auto;
+    width: auto;
+    margin-top: 0px;
+}
+
+.swiper-button-next::after {
+    font-size: 32px;
+    color: black;
+    font-family: SF Pro Display Regular;
+    content: "";
+}
+
+.swiper-2-slide-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0px;
+
+    &__category {
+        width: 160px;
+        height: 128px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 24px 52px 24px 52px;
+
+        &__text {
+            color: rgb(0, 0, 0);
+            font-family: SF Pro Display Regular;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0%;
+            text-align: center;
+            text-wrap: nowrap;
+        }
+    }
+
+    @include tablet {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px
+    }
+
+}
