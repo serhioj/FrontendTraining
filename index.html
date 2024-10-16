@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Название проекта -->
     <title>My SASS Project</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/main.css">
@@ -15,7 +16,8 @@
 <header class="container">
 
     <div class="header">
-        <div class="logo"><img src="/src/icons/Logo.svg" alt="">
+        <div class="logo">
+            <img src="/src/icons/Logo.svg" alt="">
         </div>
         <div class="search">
             <img src="/src/icons/Icon_32px_Search.svg" alt="">
@@ -70,13 +72,17 @@
     <div class="swiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- <div !-- Slides -->
-            <div style="" class="swiper-slide swiper-slide-1">
+            <div class="swiper-slide swiper-slide-1">
                 <div class="swiper-slide-1__content">
+                    <!-- Такие названия классов хуевые потому что не отображают что хранится в нем на самом деле -->
+                    <!-- Лучше прописывать более понятные названия -->
+                    <!-- Тут хуево swiper-slide-1__content__button прописывается элемент через __button. Обычно применяют
+                                                             вариант -button или _button -->
                     <p class="swiper-slide-1__content__title1">Pro.Beyond.</p>
                     <p class="swiper-slide-1__content__title2">IPhone 14 Pro </p>
                     <p class="swiper-slide-1__content__title3">Created to change everything for the better. For everyone
                     </p>
+
                     <button class="swiper-slide-1__content__button">Shop Now</button>
                 </div>
                 <div class="iphone-img"></div>
@@ -89,10 +95,12 @@
                     </p>
                     <p class="swiper-slide-1__content__title3">Created to change everything for the better. For everyone
                     </p>
+
                     <button class="swiper-slide-1__content__button">Shop Now</button>
                 </div>
                 <div class="iphone-img"></div>
             </div>
+            <!-- Лучший инлайн стили не прописывать -->
             <div style="display: flex;justify-content: space-between;" class="swiper-slide swiper-slide-1">
                 <div class="swiper-slide-1__content">
                     <p class="swiper-slide-1__content__title1">Pro.Beyond.</p>
@@ -104,19 +112,17 @@
                 <div class="iphone-img"></div>
             </div>
         </div>
-        <!-- If we need navigation buttons -->
 
-        <!-- <div class="swiper-button-prev"></div> -->
-        <!-- <div class="swiper-button-next"></div> -->
     </div>
     <div class="yobaniy-container">
         <div class="grid-div-parent">
+            <!-- У нас же не обязательно в контейнере будет находится именно этот элемент? 
+             Поэтому лучше придумать какой то более абстрактный класс. Но в целом это просто best practices -->
             <div class="grid-playstation grid-child">
                 <div class="grid-playstation-text">
                     <p class="grid-playstation-text__title">Playstation 5 </p>
-                    <p class="grid-playstation-text__description">Incredibly powerful CPUs,
-                        GPUs,
-                        and an SSD with integrated I/O will redefine your PlayStation experience.</p>
+                    <p class="grid-playstation-text__description">Incredibly powerful CPUs, GPUs, and an SSD with
+                        integrated I/O will redefine your PlayStation experience.</p>
                 </div>
             </div>
             <div class="grid-headphones grid-child">
@@ -129,8 +135,7 @@
             </div>
             <div class="grid-vision grid-child">
                 <div class="grid-vision-text">
-                    <p class="grid-vision-text__title">Apple <span style="text-wrap: nowrap;">Vision
-                            Pro </span>
+                    <p class="grid-vision-text__title">Apple <span style="text-wrap: nowrap;">Vision Pro</span>
                     </p>
                     <p class="grid-vision-text__description">An immersive way to experience entertainment</p>
                 </div>
@@ -139,12 +144,12 @@
         <div class="grid-mac">
             <div class="grid-mac-text">
                 <p class="grid-mac-text__title">Macbook Air</p>
-                <p class="grid-mac-text__description">The new 15‑inch MacBook Air makes room for more of what
-                    you
-                    love with a spacious Liquid Retina display.</p>
-                <div class="grid-mac-text__button"><button>Shop Now</button></div>
+                <p class="grid-mac-text__description">The new 15‑inch MacBook Air makes room for more of what you love
+                    with a spacious Liquid Retina display.</p>
+                <button class="grid-mac-text__button">Shop Now
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Слайдер с категориями -->
@@ -160,7 +165,7 @@
                         <img src="/src/icons/Icon_32px_Arrow.svg" alt="">
                     </div>
                     <div class="swiper-button-next">
-                        <img style="transform: scale(-1, 1)" src="/src/icons/Icon_32px_Arrow.svg" alt="">
+                        <img src="/src/icons/Icon_32px_Arrow.svg" alt="">
                     </div>
                 </div>
             </div>
